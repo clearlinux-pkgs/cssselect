@@ -4,7 +4,7 @@
 #
 Name     : cssselect
 Version  : 0.9.1
-Release  : 5
+Release  : 6
 URL      : https://pypi.python.org/packages/source/c/cssselect/cssselect-0.9.1.tar.gz
 Source0  : https://pypi.python.org/packages/source/c/cssselect/cssselect-0.9.1.tar.gz
 Summary  : cssselect parses CSS3 Selectors and translates them to XPath 1.0
