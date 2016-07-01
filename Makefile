@@ -1,4 +1,5 @@
 PKG_NAME := cssselect
-URL := https://pypi.python.org/packages/source/c/cssselect/cssselect-0.9.1.tar.gz
+URL := http://pypi.debian.net/cssselect/cssselect-0.9.2.tar.gz
+ARCHIVES :=
 
 include ../common/Makefile.common
