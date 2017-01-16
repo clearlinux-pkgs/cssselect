@@ -4,7 +4,7 @@
 #
 Name     : cssselect
 Version  : 1.0.0
-Release  : 15
+Release  : 16
 URL      : http://pypi.debian.net/cssselect/cssselect-1.0.0.tar.gz
 Source0  : http://pypi.debian.net/cssselect/cssselect-1.0.0.tar.gz
 Summary  : cssselect parses CSS3 Selectors and translates them to XPath 1.0
@@ -44,13 +44,15 @@ python components for the cssselect package.
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1484540750
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
+export SOURCE_DATE_EPOCH=1484540750
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 
 %files
 %defattr(-,root,root,-)
