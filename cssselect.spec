@@ -4,7 +4,7 @@
 #
 Name     : cssselect
 Version  : 1.0.1
-Release  : 17
+Release  : 18
 URL      : http://pypi.debian.net/cssselect/cssselect-1.0.1.tar.gz
 Source0  : http://pypi.debian.net/cssselect/cssselect-1.0.1.tar.gz
 Summary  : cssselect parses CSS3 Selectors and translates them to XPath 1.0
