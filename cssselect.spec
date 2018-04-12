@@ -4,13 +4,12 @@
 #
 Name     : cssselect
 Version  : 1.0.3
-Release  : 26
+Release  : 27
 URL      : http://pypi.debian.net/cssselect/cssselect-1.0.3.tar.gz
 Source0  : http://pypi.debian.net/cssselect/cssselect-1.0.3.tar.gz
 Summary  : cssselect parses CSS3 Selectors and translates them to XPath 1.0
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: cssselect-legacypython
 Requires: cssselect-python3
 Requires: cssselect-python
 BuildRequires : cssselect
@@ -33,19 +32,9 @@ BuildRequires : unittest2
 cssselect: CSS Selectors for Python
 ===================================
 
-%package legacypython
-Summary: legacypython components for the cssselect package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the cssselect package.
-
-
 %package python
 Summary: python components for the cssselect package.
 Group: Default
-Requires: cssselect-legacypython
 Requires: cssselect-python3
 
 %description python
@@ -69,25 +58,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1514393681
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1523566877
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1514393681
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
-
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files python
 %defattr(-,root,root,-)
