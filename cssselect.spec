@@ -4,7 +4,7 @@
 #
 Name     : cssselect
 Version  : 1.1.0
-Release  : 42
+Release  : 43
 URL      : https://files.pythonhosted.org/packages/70/54/37630f6eb2c214cdee2ae56b7287394c8aa2f3bafb8b4eb8c3791aae7a14/cssselect-1.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/70/54/37630f6eb2c214cdee2ae56b7287394c8aa2f3bafb8b4eb8c3791aae7a14/cssselect-1.1.0.tar.gz
 Summary  : cssselect parses CSS3 Selectors and translates them to XPath 1.0
@@ -20,6 +20,44 @@ BuildRequires : pytest
 ===================================
 cssselect: CSS Selectors for Python
 ===================================
+
+.. image:: https://img.shields.io/pypi/v/cssselect.svg
+   :target: https://pypi.python.org/pypi/cssselect
+   :alt: PyPI Version
+
+.. image:: https://img.shields.io/pypi/pyversions/cssselect.svg
+   :target: https://pypi.python.org/pypi/cssselect
+   :alt: Supported Python Versions
+
+.. image:: https://img.shields.io/travis/scrapy/cssselect/master.svg
+   :target: https://travis-ci.org/scrapy/cssselect
+   :alt: Build Status
+
+.. image:: https://img.shields.io/codecov/c/github/scrapy/cssselect/master.svg
+   :target: https://codecov.io/github/scrapy/cssselect?branch=master
+   :alt: Coverage report
+
+*cssselect* parses `CSS3 Selectors`_ and translate them to `XPath 1.0`_
+expressions. Such expressions can be used in lxml_ or another XPath engine
+to find the matching elements in an XML or HTML document.
+
+This module used to live inside of lxml as ``lxml.cssselect`` before it was
+extracted as a stand-alone project.
+
+.. _CSS3 Selectors: https://www.w3.org/TR/css3-selectors/
+.. _XPath 1.0: https://www.w3.org/TR/xpath/
+.. _lxml: http://lxml.de/
+
+
+Quick facts:
+
+* Free software: BSD licensed
+* Compatible with Python 2.7 and 3.4+
+* Latest documentation `on Read the Docs <https://cssselect.readthedocs.io/>`_
+* Source, issues and pull requests `on GitHub
+  <https://github.com/scrapy/cssselect>`_
+* Releases `on PyPI <http://pypi.python.org/pypi/cssselect>`_
+* Install with ``pip install cssselect``
 
 %package license
 Summary: license components for the cssselect package.
@@ -42,6 +80,7 @@ python components for the cssselect package.
 Summary: python3 components for the cssselect package.
 Group: Default
 Requires: python3-core
+Provides: pypi(cssselect)
 
 %description python3
 python3 components for the cssselect package.
@@ -49,13 +88,15 @@ python3 components for the cssselect package.
 
 %prep
 %setup -q -n cssselect-1.1.0
+cd %{_builddir}/cssselect-1.1.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570328882
+export SOURCE_DATE_EPOCH=1582914563
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -68,7 +109,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cssselect
-cp LICENSE %{buildroot}/usr/share/package-licenses/cssselect/LICENSE
+cp %{_builddir}/cssselect-1.1.0/LICENSE %{buildroot}/usr/share/package-licenses/cssselect/b44b1b116e90b52ab7da1109a774acce7b67cd35
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -79,7 +120,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/cssselect/LICENSE
+/usr/share/package-licenses/cssselect/b44b1b116e90b52ab7da1109a774acce7b67cd35
 
 %files python
 %defattr(-,root,root,-)
